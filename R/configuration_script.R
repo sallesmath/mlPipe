@@ -48,3 +48,5 @@ usethis::use_readme_md()
 
 ### Ignorar arquivos no git ---------------------------------
 usethis::use_git_ignore(c("proj_setup/"))
+
+check()
