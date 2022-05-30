@@ -15,21 +15,21 @@ usethis::create_project("C:/Users/mathe/OneDrive/mlPipe")
 # if you want to crate a package
 usethis::create_package("C:/Users/mathe/OneDrive/mlPipe")
 
-### Adicionando git ao projeto
+### Adding git to the project
 usethis::use_git()
-# escolha se quer fazer o commit dos arquivos.
-# Se sim: Yup
+# choose if you want to commit your files.
+# If yes: Yup
 
-# escolha a opção para reiniciar o RStudio
+# choose the best option to restart RStudio
 
 
-### Configurando o github no projeto,
-# Vai criar o repositório na conta
-# argumentos private e visibility pra alterar a visibilidade do repositório
+### Config GitHub in your project,
+# You´re going to create a repository in your account
+# arguments private and visibility to modify repository's visibility
 usethis::use_github()
-# Repositório criado!
+# repository created!
 
-## Algumas precauções
+## Some warnings
 # Get a situation report on your current Git/GitHub status.
 # Useful for diagnosing problems.
 usethis::git_sitrep()
@@ -40,11 +40,11 @@ usethis::git_sitrep()
 # decreases the chance that you will accidentally leak credentials to GitHub
 usethis::git_vaccinate()
 
-### Adicionando arquivos ---------------------------------
-## Criar um arquivo README.md
+### Adding important files ---------------------------------
+## Create a README.md file
 usethis::use_readme_md()
-# O arquivo será criado e aberto, para ser editado e salvo.
-# faça o commit e Push para o GitHub
+# You have do edit and then save your README file.
+# commit it and then push it to your GitHub profile
 
 ### Ignorar arquivos no git ---------------------------------
 usethis::use_git_ignore(c("proj_setup/"))
