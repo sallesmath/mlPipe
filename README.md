@@ -9,7 +9,7 @@ The goal of mlPipe is to automate machine learning functions in R environment
 
 ## Installation
 
-You can install the development version of pacoteTeste like so:
+You can install the development version of mlPipe like so:
 
 ``` r
 # HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
