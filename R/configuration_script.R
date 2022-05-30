@@ -46,7 +46,13 @@ usethis::use_readme_md()
 # You have do edit and then save your README file.
 # commit it and then push it to your GitHub profile
 
-### Ignorar arquivos no git ---------------------------------
+### Ignore git files ---------------------------------
 usethis::use_git_ignore(c("proj_setup/"))
 
-check()
+# R is GPL, any work linking dynamically or statically to R would have to be GPL-based also
+# licensas de pacotes permitidas no CRAN:
+# https://www.r-project.org/Licenses/
+# AGPL, GPLv2, GPLv3, MIT, Creative Commons, Artistic License, etc.
+
+## By now we're going to use GPL
+use_gpl3_license()
