@@ -27,7 +27,6 @@ usethis::use_git()
 # You´re going to create a repository in your account
 # arguments private and visibility to modify repository's visibility
 usethis::use_github()
-usethis::use_git_remote("origin", url = NULL, overwrite = TRUE)
 # repository created!
 
 ## Some warnings
@@ -100,6 +99,7 @@ check()
 ### Install
 # Since we have a minimally viable package, let's install
 install()
+devtools::install_github("sallesmath/mlPipe")
 
 # loading and using package
 library(mlbench)
