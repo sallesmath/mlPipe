@@ -1,10 +1,10 @@
-#' Configure input data
+#' Configuration of input files
 #'
 #' @param dataset a dataframe
 #' @param train_percent numerical value (percentage, in decimals) you want for training data
-#' @param resampling
+#' @param resampling specific method from caret::trainControl
 #'
-#' @return list
+#' @return
 #' @export
 #'
 #' @examples
@@ -12,7 +12,7 @@
 #' library(mlbench)
 #' library(caret)
 #' # load data
-#' # tabela dispoível no banco de dados do pacote caret
+#' # table available in caret package database
 #' data(PimaIndiansDiabetes)
 #' # rename dataset to keep code below generic
 #' my_df <- PimaIndiansDiabetes
@@ -24,4 +24,3 @@ data.config <- function(dataset, train_percent, resampling) {
   control <- trainControl(method = resampling)
   return(control)
 }
-
