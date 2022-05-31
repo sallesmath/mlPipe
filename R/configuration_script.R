@@ -27,6 +27,7 @@ usethis::use_git()
 # You´re going to create a repository in your account
 # arguments private and visibility to modify repository's visibility
 usethis::use_github()
+usethis::use_git_remote("origin", url = NULL, overwrite = TRUE)
 # repository created!
 
 ## Some warnings
