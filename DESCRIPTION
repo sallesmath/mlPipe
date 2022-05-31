@@ -2,7 +2,7 @@ Package: mlPipe
 Title: Pipeline with Machine Learning automated functions
 Version: 0.0.0.9000
 Authors@R: 
-    person("Matheus", "Salles", , "matheusmaciel.salles@gmail.com.com",
+    person("Matheus", "Salles", , "matheusmaciel.salles@gmail.com",
            comment = c(ORCID = "0000-0002-1177-9844"))
 Description: This package provides automated functions to train, test and compare different machine learning models.
 License: GPL (>= 3)
