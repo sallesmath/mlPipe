@@ -6,9 +6,11 @@
 ## Msc. Matheus Maciel Alcantara Salles - PPGZoo - UFPR
 ## matheusmaciel.salles@gmail.com
 
-### Upload packages "usethis" and "devtools"
+### Upload packages
 library(usethis)
 library(devtools)
+library(caret)
+library(mlbench)
 
 # if you want to create a project
 usethis::create_project("C:/Users/mathe/OneDrive/mlPipe")
@@ -102,11 +104,9 @@ install()
 devtools::install_github("sallesmath/mlPipe")
 
 # loading and using package
-library(mlbench)
-library(caret)
-data(PimaIndiansDiabetes)
-my_df <- PimaIndiansDiabetes
-my_df_config <- data.config(my_df, 0.7, "repeatedcv")
-my_df_config
+# data(PimaIndiansDiabetes)
+# my_df <- PimaIndiansDiabetes
+# my_df_config <- data.config(my_df, 0.7, "repeatedcv")
+# my_df_config
 
 ## Hope everything is working ;)
