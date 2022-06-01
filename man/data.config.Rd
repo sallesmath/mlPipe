@@ -14,7 +14,7 @@ data.config(dataset, train_percent, resampling)
 \item{resampling}{specific method from caret - trainControl}
 }
 \value{
-
+a list containing the parameters set by the trainControl function
 }
 \description{
 Configuration of input files
