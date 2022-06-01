@@ -11,7 +11,7 @@ data.config(dataset, train_percent, resampling)
 
 \item{train_percent}{numerical value (percentage, in decimals) you want for training data}
 
-\item{resampling}{specific method from caret::trainControl}
+\item{resampling}{specific method from caret - trainControl}
 }
 \value{
 
