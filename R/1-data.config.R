@@ -3,7 +3,7 @@
 #' @import caret mlbench
 #' @param dataset a dataframe
 #' @param train_percent numerical value (percentage, in decimals) you want for training data
-#' @param resampling specific method from caret::trainControl
+#' @param resampling specific method from caret - trainControl
 #'
 #' @return
 #' @export

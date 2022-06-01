@@ -21,9 +21,7 @@ Configuration of input files
 }
 \examples{
 # upload the necessary packages
-install.packages("mlbench")
 library(mlbench)
-install.packages("caret")
 library(caret)
 # load data
 # table available in caret package database
