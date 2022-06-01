@@ -5,7 +5,7 @@
 #' @param train_percent numerical value (percentage, in decimals) you want for training data
 #' @param resampling specific method from caret - trainControl
 #'
-#' @return
+#' @return a list containing the parameters set by the trainControl function
 #' @export
 #'
 #' @examples
