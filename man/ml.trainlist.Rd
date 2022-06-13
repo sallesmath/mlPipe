@@ -36,6 +36,6 @@ data(PimaIndiansDiabetes)
 # rename dataset to keep code below generic
 my_df <- PimaIndiansDiabetes
 # now you're able to train your data
-my_models_list <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
-my_models_list
+my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
+my_models
 }

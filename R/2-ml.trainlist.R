@@ -1,6 +1,6 @@
 #' Returning a list from multiple machine learning trained models
 #'
-#' @import caret mlbench caretEnsemble
+#' @import caret mlbench caretEnsemble randomForest
 #' @param dataset a dataframe
 #' @param train_percent numerical value (percentage, in decimals) you want for training data
 #' @param algorithm set of methods from caret::trainControl
@@ -24,8 +24,8 @@
 #' # rename dataset to keep code below generic
 #' my_df <- PimaIndiansDiabetes
 #' # now you're able to train your data
-#' my_models_list <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
-#' my_models_list
+#' my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
+#' my_models
 
 ml.trainlist <- function(dataset, train_percent, algorithm, metric, seed, resampling) {
   set.seed(seed) # setting a specific seed

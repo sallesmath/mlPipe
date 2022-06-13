@@ -8,7 +8,8 @@ Description: Pipeline with automated machine learning functions.
 Imports:
     mlbench,
     caret,
-    caretEnsemble
+    caretEnsemble,
+    randomForest
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
