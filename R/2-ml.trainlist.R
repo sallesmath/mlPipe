@@ -7,7 +7,6 @@
 #' @param metric specific evaluation metric from caret::trainControl
 #' @param seed specific seed value
 #' @param resampling specific method from caret::trainControl
-#' @param ...
 #' @inheritParams caret::trainControl
 #' @inheritParams caret::train
 #' @inheritParams caretEnsemble::caretList
@@ -29,7 +28,7 @@
 #' ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
 #' my_model
 
-ml.trainlist <- function(dataset, train_percent, algorithm, metric, seed, resampling, ...) {
+ml.trainlist <- function(dataset, train_percent, algorithm, metric, seed, resampling) {
   set.seed(seed) # setting a specific seed
   rows <- sample(nrow(dataset))
 
