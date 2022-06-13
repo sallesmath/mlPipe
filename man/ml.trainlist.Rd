@@ -4,7 +4,7 @@
 \alias{ml.trainlist}
 \title{Returning a list from multiple machine learning trained models}
 \usage{
-ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling, ...)
+ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling)
 }
 \arguments{
 \item{dataset}{a dataframe}
@@ -18,11 +18,6 @@ ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling, ...)
 \item{seed}{specific seed value}
 
 \item{resampling}{specific method from caret::trainControl}
-
-\item{...}{Arguments passed to the classification or
-regression routine (such as
-\code{\link[randomForest]{randomForest}}). Errors will occur if
-values for tuning parameters are passed here.}
 }
 \value{
 a list of objects of class 'train' (from caret::train)

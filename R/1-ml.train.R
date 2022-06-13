@@ -23,7 +23,7 @@
 #' # rename dataset to keep code below generic
 #' my_df <- PimaIndiansDiabetes
 #' # now you're able to train your data
-#' my_model <- ml.train(my_df, 0.8, "repeatedcv", "lda", "Accuracy", 42)
+#' my_model <- ml.train(my_df, 0.8, "lda", "Accuracy", 42, "repeatedcv")
 #' my_model
 
 ml.train <- function(dataset, train_percent, algorithm, metric, seed, resampling) {

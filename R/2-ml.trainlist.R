@@ -8,7 +8,6 @@
 #' @param seed specific seed value
 #' @param resampling specific method from caret::trainControl
 #' @inheritParams caret::trainControl
-#' @inheritParams caret::train
 #' @inheritParams caretEnsemble::caretList
 #'
 #' @return a list of objects of class 'train' (from caret::train)
