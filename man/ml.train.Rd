@@ -4,23 +4,23 @@
 \alias{ml.train}
 \title{Configuration of input file and training data with a machine learning model}
 \usage{
-ml.train(dataset, train_percent, resampling, algorithm, metric, seed)
+ml.train(dataset, train_percent, algorithm, metric, seed, resampling)
 }
 \arguments{
 \item{dataset}{a dataframe}
 
 \item{train_percent}{numerical value (percentage, in decimals) you want for training data}
 
-\item{resampling}{specific method from caret::trainControl}
-
 \item{algorithm}{specific method from caret::trainControl}
 
 \item{metric}{specific evaluation metric from caret::trainControl}
 
 \item{seed}{specific seed value}
+
+\item{resampling}{specific method from caret::trainControl}
 }
 \value{
-a list is returned of class train
+an object is returned of class train
 }
 \description{
 Configuration of input file and training data with a machine learning model
