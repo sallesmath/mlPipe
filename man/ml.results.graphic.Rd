@@ -15,8 +15,7 @@ ml.results.graphic(
 
 \item{graphic}{user-determined plotting options (bwplot, dotplot, splom or parallelplot)}
 
-\item{...}{ Further arguments.  See corresponding entry in
-    \code{\link[lattice]{xyplot}} for non-trivial details.  }
+\item{...}{your specific graphic params}
 }
 \value{
 graphic

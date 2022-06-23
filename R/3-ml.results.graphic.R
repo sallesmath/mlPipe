@@ -3,7 +3,7 @@
 #' @import lattice
 #' @param ml_result a list of trained machine learning models
 #' @param graphic user-determined plotting options (bwplot, dotplot, splom or parallelplot)
-#' @param ...
+#' @param ... your specific graphic params
 #' @inheritParams lattice::splom
 #' @inheritParams lattice::parallelplot
 #' @inheritParams lattice::bwplot
