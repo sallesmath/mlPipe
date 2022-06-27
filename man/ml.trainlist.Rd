@@ -4,18 +4,7 @@
 \alias{ml.trainlist}
 \title{Returning a list from multiple machine learning trained models}
 \usage{
-ml.trainlist(
-  dataset,
-  train_percent,
-  algorithm,
-  metric,
-  seed,
-  resampling,
-  number,
-  repeats,
-  savePredictions,
-  ...
-)
+ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling, ...)
 }
 \arguments{
 \item{dataset}{a dataframe}
@@ -30,12 +19,6 @@ ml.trainlist(
 
 \item{resampling}{specific method from caret::trainControl}
 
-\item{number}{specific parameter from caret::trainControl}
-
-\item{repeats}{specific parameter from caret::trainControl}
-
-\item{savePredictions}{specific parameter from caret::trainControl}
-
 \item{...}{another parameters from your choice}
 }
 \value{
@@ -49,12 +32,13 @@ Returning a list from multiple machine learning trained models
 library(mlbench)
 library(caret)
 library(caretEnsemble)
+library(mlPipe)
 # load data
 # table available in caret package database
 data(PimaIndiansDiabetes)
 # rename dataset to keep code below generic
 my_df <- PimaIndiansDiabetes
 # now you're able to train your data
-my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv", number = 5, repeats = 3, savePredictions = "final")
+my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "repeatedcv")
 my_models
 }

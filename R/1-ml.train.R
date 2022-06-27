@@ -17,6 +17,7 @@
 #' # upload the necessary packages
 #' library(mlbench)
 #' library(caret)
+#' library(mlPipe)
 #' # load data
 #' # table available in caret package database
 #' data(PimaIndiansDiabetes)

@@ -17,6 +17,7 @@
 #' library(mlbench)
 #' library(caret)
 #' library(caretEnsemble)
+#' library(mlPipe)
 #' # load data
 #' # table available in caret package database
 #' data(PimaIndiansDiabetes)
