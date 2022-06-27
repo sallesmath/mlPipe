@@ -28,9 +28,9 @@
 #' my_models
 #' results <- caret::resamples(my_models)
 #' summary(results)
-#' ml.results.graphic(ml_result = results, graphic = "bwplot")
+#' ml.graphic(ml_result = results, graphic = "bwplot")
 
-ml.results.graphic <- function(ml_result, graphic = c("bwplot", "dotplot", "parallelplot", "splom"), ...) {
+ml.graphic <- function(ml_result, graphic = c("bwplot", "dotplot", "parallelplot", "splom"), ...) {
   graphic <- match.arg(graphic)
   if(graphic=="bwplot") return(bwplot(ml_result))
   if(graphic=="dotplot") return(dotplot(ml_result))
