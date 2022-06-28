@@ -44,7 +44,7 @@ head(my_df)
 In this tutorial, we're going to start by defining our train and test sets
 ```{r}
 # first of all, you're going to define your training set
-my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+my_training_sample <- ml.trainset(my_df, 0.8, seed = 42)
 my_training_sample # see your new data
 
 # after that, you can also define your test set
@@ -52,7 +52,6 @@ my_test_sample <- ml.testset(my_df, 0.2, seed = 42)
 my_test_sample
 
 # It is important that you define a single seed value so that the datasets are compatible
-
 ```
 
 Now we're going to do the input file configuration and train our data with a specific machine learning model
@@ -63,7 +62,7 @@ Now we're going to do the input file configuration and train our data with a spe
 # Evaluation metric: Accuracy
 # Setting a seed: 42
 # Resampling method: Cross-validation ("cv")
-my_model <- ml.train(train_sample = my_training_sample, algorithm = "rf", metric = "Accuracy", seed = 42, resampling = "cv")
+my_model <- ml.train(train_sample = my_training_sample, algorithm = "lda", metric = "Accuracy", seed = 42, resampling = "cv")
 my_model
 ```
 
