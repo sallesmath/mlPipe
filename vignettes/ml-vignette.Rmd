@@ -26,9 +26,9 @@ library(caretEnsemble)
 ```
 
 ### Package datasets
-Inspect datasets to use mlPipe functions. In this tutorial we're going to use datasets present in mlbench and caret packages.
+Inspect datasets to use mlPipe functions. In this tutorial we're going to use a dataset present in mlbench and caret.
 
-If you want to use other datasets, it is important that you organize your data in a dataframe (samples in the rows and characteristics of interest in the columns). Also, for the package to work properly, the response variable (or dependent variable) MUST be represented in the last column of your dataframe.
+If you want to use other datasets, it is important that you organize your data in a dataframe with samples in rows and characteristics of interest in columns. Also, for the package to work properly, the dependent variable MUST be represented in the last column of your dataframe.
 ```{r}
 data(PimaIndiansDiabetes)
 
@@ -42,7 +42,6 @@ head(my_df)
 
 ### Package functions
 In this tutorial, we're going to start by doing the input file configuration and training our data with a specific machine learning model
-
 ```{r}
 # Train your data with specific parameters. In this case, we're going to use:
 # 80%/20% split between training and test set
