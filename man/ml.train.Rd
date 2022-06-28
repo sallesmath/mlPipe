@@ -4,13 +4,9 @@
 \alias{ml.train}
 \title{Configuration of input file and training data with a machine learning model}
 \usage{
-ml.train(dataset, train_percent, algorithm, metric, seed, resampling)
+ml.train(train_sample, algorithm, metric, seed, resampling)
 }
 \arguments{
-\item{dataset}{a dataframe}
-
-\item{train_percent}{numerical value (percentage, in decimals) you want for training data}
-
 \item{algorithm}{specific method from caret::trainControl}
 
 \item{metric}{specific evaluation metric from caret::trainControl}
@@ -18,6 +14,10 @@ ml.train(dataset, train_percent, algorithm, metric, seed, resampling)
 \item{seed}{specific seed value}
 
 \item{resampling}{specific method from caret::trainControl}
+
+\item{dataset}{a dataframe}
+
+\item{train_percent}{numerical value (percentage, in decimals) you want for training data}
 }
 \value{
 an object is returned of class train
@@ -26,7 +26,7 @@ an object is returned of class train
 Configuration of input file and training data with a machine learning model
 }
 \examples{
-# upload the necessary packages
+# load packages
 library(mlbench)
 library(caret)
 library(mlPipe)
@@ -35,7 +35,10 @@ library(mlPipe)
 data(PimaIndiansDiabetes)
 # rename dataset to keep code below generic
 my_df <- PimaIndiansDiabetes
-# now you're able to train your data
-my_model <- ml.train(my_df, 0.8, "lda", "Accuracy", 42, "repeatedcv")
+# now we're going to define our training sample
+my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+my_training_sample
+# and now we're able to train our model
+my_model <- ml.train(train_sample = my_training_sample, algorithm = "lda", metric = "Accuracy", seed = 42, resampling = "cv")
 my_model
 }

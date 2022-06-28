@@ -41,19 +41,33 @@ head(my_df)
 --------------
 
 ### Package functions
-In this tutorial, we're going to start by doing the input file configuration and training our data with a specific machine learning model
+In this tutorial, we're going to start by defining our train and test sets
+```{r}
+# first of all, you're going to define your training set
+my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+my_training_sample # see your new data
+
+# after that, you can also define your test set
+my_test_sample <- ml.testset(my_df, 0.2, seed = 42)
+my_test_sample
+
+# It is important that you define a single seed value so that the datasets are compatible
+
+```
+
+Now we're going to do the input file configuration and train our data with a specific machine learning model
 ```{r}
 # Train your data with specific parameters. In this case, we're going to use:
 # 80%/20% split between training and test set
 # Machine learning algorithm: Linear discriminant analysis (lda)
 # Evaluation metric: Accuracy
 # Setting a seed: 42
-# Resampling method: Repeated cross-validation ("repeatedcv")
-my_model <- ml.train(my_df, 0.8, "lda", "Accuracy", 42, "repeatedcv")
+# Resampling method: Cross-validation ("cv")
+my_model <- ml.train(train_sample = my_training_sample, algorithm = "rf", metric = "Accuracy", seed = 42, resampling = "cv")
 my_model
 ```
 
-Using another function from our package you can also train multiple models at the same time. ml.trainlist wiil generate a list of trained machine learning models.
+By using another function from our package you can also train multiple models at the same time. The next function wiil generate a list of trained machine learning models.
 ```{r}
 # Train your data with specific parameters. In this case, we're going to use:
 # 80%/20% split between training and test set
@@ -61,7 +75,7 @@ Using another function from our package you can also train multiple models at th
 # Evaluation metric: Accuracy
 # Setting a seed: 42
 # Resampling method: Repeated cross-validation ("repeatedcv")
-my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "repeatedcv")
+my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
 my_models
 ```
 
@@ -71,6 +85,14 @@ Now that you have a list of trained machine learning models, it's useful to visu
 results <- resamples(my_models)
 summary(results)
 # Now we're ready to plot our trained data
-# The available graphic options in our package are: bwplot, dotplot, parallelplot and splom. In this tutorial we're going to use bwplot:
+# The available graphic options in our package are: bwplot, dotplot, parallelplot and splom. In this tutorial we're going to use dotplot:
 ml.graphic(ml_result = results, graphic = "dotplot")
+```
+
+Let's assume that LDA was the most accurate model. If you want to get even more insight into your model, you can apply it to a validation dataset. However, for the purposes of this tutorial we will apply our model directly to the test set.
+
+We can run the LDA model directly on the test set and summarize the results in a confusion matrix (using caret functions)
+```{r}
+predictions <- predict(my_model, my_test_sample)
+confusionMatrix(predictions, my_test_sample$diabetes)
 ```

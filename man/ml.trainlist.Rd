@@ -4,13 +4,9 @@
 \alias{ml.trainlist}
 \title{Returning a list from multiple machine learning trained models}
 \usage{
-ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling, ...)
+ml.trainlist(train_sample, algorithm, metric, seed, resampling, ...)
 }
 \arguments{
-\item{dataset}{a dataframe}
-
-\item{train_percent}{numerical value (percentage, in decimals) you want for training data}
-
 \item{algorithm}{set of methods from caret::trainControl}
 
 \item{metric}{specific evaluation metric from caret::trainControl}
@@ -20,6 +16,10 @@ ml.trainlist(dataset, train_percent, algorithm, metric, seed, resampling, ...)
 \item{resampling}{specific method from caret::trainControl}
 
 \item{...}{another parameters from your choice}
+
+\item{dataset}{a dataframe}
+
+\item{train_percent}{numerical value (percentage, in decimals) you want for training data}
 }
 \value{
 a list of objects of class 'train' (from caret::train)
@@ -28,17 +28,19 @@ a list of objects of class 'train' (from caret::train)
 Returning a list from multiple machine learning trained models
 }
 \examples{
-# upload the necessary packages
+# load packages
 library(mlbench)
 library(caret)
-library(caretEnsemble)
 library(mlPipe)
 # load data
 # table available in caret package database
 data(PimaIndiansDiabetes)
 # rename dataset to keep code below generic
 my_df <- PimaIndiansDiabetes
-# now you're able to train your data
-my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "repeatedcv")
+# now we're going to define our training sample
+my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+my_training_sample
+# and now we're able to train our model
+my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
 my_models
 }

@@ -15,31 +15,28 @@
 #' @export
 #'
 #' @examples
-#' # upload the necessary packages
+#' # load packages
 #' library(mlbench)
 #' library(caret)
-#' library(caretEnsemble)
 #' library(mlPipe)
 #' # load data
 #' # table available in caret package database
 #' data(PimaIndiansDiabetes)
 #' # rename dataset to keep code below generic
 #' my_df <- PimaIndiansDiabetes
-#' # now you're able to train your data
-#' my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "repeatedcv")
+#' # now we're going to define our training sample
+#' my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+#' my_training_sample
+#' # and now we're able to train our model
+#' my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
 #' my_models
 
-ml.trainlist <- function(dataset, train_percent, algorithm, metric, seed, resampling, ...) {
+ml.trainlist <- function(train_sample, algorithm, metric, seed, resampling, ...) {
   set.seed(seed) # setting a specific seed
-  rows <- sample(nrow(dataset))
 
-  shuffled_dataset <- dataset[rows, ] # here we're shuffling our data, to avoid any bias in the analysis
-  split <- round(nrow(shuffled_dataset) * train_percent) # setting a training sample from the original dataframe
-  first_train_sample <- shuffled_dataset[1:split, ] # here we're setting our training sample
-
-  dependent_variable <- first_train_sample[ , ncol(first_train_sample), drop = FALSE] # here we're setting our dependent variable, assuming it's in the last column of the dataframe
+  dependent_variable <- train_sample[ , ncol(train_sample), drop = FALSE] # here we're setting our dependent variable, assuming it's in the last column of your dataframe
   vec_dependent_variable <- dependent_variable[, 1] # transforming our dependent variable into a vector
-  final_train_sample <- first_train_sample[,-ncol(first_train_sample)] # here we're removing the column with the dependent variable from our new dataframe with the training data
+  final_train_sample <- train_sample[,-ncol(train_sample)] # here we're removing the column with the dependent variable from our new dataframe with the training data
 
   control <- caret::trainControl(method = resampling) # setting parameters from trainControl
 
