@@ -11,16 +11,11 @@ The goal of mlPipe is to automate some machine learning functions
 You can install the development version of mlPipe from [GitHub](https://github.com/sallesmath/mlPipe) with: devtools::install_github("sallesmath/mlPipe")
 
 ``` r
-# install.packages("devtools")
 devtools::install_github("sallesmath/mlPipe")
+# another alternative install.packages("devtools")
 ```
 
-## Example
+## Tutorial
 
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(mlPipe)
-## basic example code
-```
+You can find a tutorial covering the basic functionality of the package at this link: https://github.com/sallesmath/mlPipe/tree/master/vignettes
 
