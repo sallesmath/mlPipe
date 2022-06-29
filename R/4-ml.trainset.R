@@ -1,5 +1,6 @@
 #' Setting a training sample to machine learning analyses
 #'
+#' @import utils
 #' @param dataset a dataframe
 #' @param train_percent numerical value (percentage, in decimals) you want for training data
 #' @param seed specific seed value

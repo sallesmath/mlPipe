@@ -1,6 +1,6 @@
 #' Plotting evaluation metrics from different machine learning models
 #'
-#' @import lattice
+#' @import lattice caret mlbench randomForest utils
 #' @param ml_result a list of trained machine learning models
 #' @param graphic user-determined plotting options (bwplot, dotplot, splom or parallelplot)
 #' @param ... your specific graphic params
