@@ -6,8 +6,6 @@
 #' @param algorithm specific method from caret::trainControl
 #' @param metric specific evaluation metric from caret::trainControl
 #' @param seed specific seed value
-#' @inheritParams caret::trainControl
-#' @inheritParams caret::train
 #'
 #' @return an object is returned of class train
 #' @export
