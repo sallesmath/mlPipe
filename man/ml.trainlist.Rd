@@ -7,6 +7,8 @@
 ml.trainlist(train_sample, algorithm, metric, seed, resampling, ...)
 }
 \arguments{
+\item{train_sample}{your train set}
+
 \item{algorithm}{set of methods from caret::trainControl}
 
 \item{metric}{specific evaluation metric from caret::trainControl}
@@ -16,10 +18,6 @@ ml.trainlist(train_sample, algorithm, metric, seed, resampling, ...)
 \item{resampling}{specific method from caret::trainControl}
 
 \item{...}{another parameters from your choice}
-
-\item{dataset}{a dataframe}
-
-\item{train_percent}{numerical value (percentage, in decimals) you want for training data}
 }
 \value{
 a list of objects of class 'train' (from caret::train)
@@ -38,7 +36,7 @@ data(PimaIndiansDiabetes)
 # rename dataset to keep code below generic
 my_df <- PimaIndiansDiabetes
 # now we're going to define our training sample
-my_training_sample <- ml.train(my_df, 0.8, seed = 42)
+my_training_sample <- ml.trainset(my_df, 0.8, seed = 42)
 my_training_sample
 # and now we're able to train our model
 my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
