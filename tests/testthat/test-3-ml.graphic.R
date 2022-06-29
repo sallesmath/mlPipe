@@ -10,6 +10,6 @@ test_that("test if your desired list of plots is working", {
   my_models
   results <- caret::resamples(my_models)
   summary(results)
-  my_plot <- ml.results.graphic(ml_result = results, graphic = "bwplot")
+  my_plot <- ml.graphic(ml_result = results, graphic = "bwplot")
   expect_type(my_plot, "list")
 })
