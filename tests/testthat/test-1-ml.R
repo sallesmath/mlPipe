@@ -5,6 +5,6 @@ test_that("arguments are valid and the function returns an object of class train
   # rename dataset to keep code below generic
   my_df <- PimaIndiansDiabetes
   # now you're able to train your data
-  my_model <- ml.train(my_df, 0.8, "lda", "Accuracy", 42, "repeatedcv")
+  my_model <- ml.train(train_sample = my_training_sample, algorithm = "lda", metric = "Accuracy", seed = 42, resampling = "cv")
   expect_s3_class(my_model, "train")
 })
