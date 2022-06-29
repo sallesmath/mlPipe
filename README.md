@@ -19,3 +19,5 @@ devtools::install_github("sallesmath/mlPipe")
 
 You can find a tutorial covering the basic functionality of the package at this link: https://github.com/sallesmath/mlPipe/tree/master/vignettes
 
+Questions, please contact: matheusmaciel.salles@gmail.com
+
