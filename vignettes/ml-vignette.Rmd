@@ -24,9 +24,9 @@ library(caretEnsemble)
 ```
 
 ### Package datasets
-Inspect datasets to use mlPipe functions. In this tutorial we're going to use a dataset present in mlbench and caret.
+Inspect your dataset before using mlPipe functions. In this tutorial we're going to use a dataset present in mlbench and caret.
 
-If you want to use other datasets, it is important that you organize your data in a dataframe with samples in rows and characteristics of interest in columns. Also, for the package to work properly, the dependent variable MUST be represented in the last column of your dataframe.
+If you want to use other datasets, it is important that you organize your data in a dataframe with samples in rows and features of interest in columns. Also, for the package to work properly, the dependent variable MUST be represented in the last column of your dataframe.
 ```{r}
 data(PimaIndiansDiabetes)
 
@@ -34,6 +34,7 @@ data(PimaIndiansDiabetes)
 
 my_df <- PimaIndiansDiabetes
 head(my_df)
+str(my_df)
 ```
 
 --------------
@@ -43,11 +44,13 @@ In this tutorial, we're going to start by defining our train and test sets
 ```{r}
 # first of all, you're going to define your training set
 my_training_sample <- ml.trainset(my_df, 0.8, seed = 42)
-my_training_sample # see your new data
+head(my_training_sample) # see your new data
+str(my_training_sample)
 
 # after that, you can also define your test set
 my_test_sample <- ml.testset(my_df, 0.2, seed = 42)
-my_test_sample
+head(my_test_sample)
+str(my_test_sample)
 
 # It is important that you define a single seed value so that the datasets are compatible
 ```
@@ -56,22 +59,22 @@ Now we're going to do the input file configuration and train our data with a spe
 ```{r}
 # Train your data with specific parameters. In this case, we're going to use:
 # 80%/20% split between training and test set
-# Machine learning algorithm: Linear discriminant analysis (lda)
+# Machine learning algorithm: Generalized Linear Model (glm)
 # Evaluation metric: Accuracy
 # Setting a seed: 42
 # Resampling method: Cross-validation ("cv")
-my_model <- ml.train(train_sample = my_training_sample, algorithm = "lda", metric = "Accuracy", seed = 42, resampling = "cv")
+my_model <- ml.train(train_sample = my_training_sample, algorithm = "glm", metric = "Accuracy", seed = 42, resampling = "cv")
 my_model
 ```
 
-By using another function from our package you can also train multiple models at the same time. The next function wiil generate a list of trained machine learning models.
+By using another function from our package you can train multiple models at the same time. The next function wiil generate a list of trained machine learning models.
 ```{r}
 # Train your data with specific parameters. In this case, we're going to use:
 # 80%/20% split between training and test set
 # Machine learning algorithms: Random Forest (rf), Linear discriminant analysis (lda), Generalized Linear Model (glm), K-Nearest Neighbour (knn)
 # Evaluation metric: Accuracy
 # Setting a seed: 42
-# Resampling method: Repeated cross-validation ("repeatedcv")
+# Resampling method: Cross-validation ("cv")
 my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
 my_models
 ```
@@ -79,17 +82,17 @@ my_models
 Now that you have a list of trained machine learning models, it's useful to visualize them. In order to do so, you can use the following function
 ```{r}
 # The next functions provide methods for collection, analyzing and visualizing a set of resampling results from a common data set.
-results <- resamples(my_models)
+results <- caret::resamples(my_models)
 summary(results)
 # Now we're ready to plot our trained data
 # The available graphic options in our package are: bwplot, dotplot, parallelplot and splom. In this tutorial we're going to use dotplot:
 ml.graphic(ml_result = results, graphic = "dotplot")
 ```
 
-Let's assume that LDA was the most accurate model. If you want to get even more insight into your model, you can apply it to a validation dataset. However, for the purposes of this tutorial we will apply our model directly to the test set.
+Let's assume that GLM was the most accurate model. If you want to get even more insight into your model, you can apply it to a validation dataset. However, for the purposes of this tutorial we will apply our model directly to the test set.
 
 We can run the LDA model directly on the test set and summarize the results in a confusion matrix (using caret functions)
 ```{r}
-predictions <- predict(my_model, my_test_sample)
-confusionMatrix(predictions, my_test_sample$diabetes)
+predictions <- stats::predict(my_model, my_test_sample)
+caret::confusionMatrix(predictions, my_test_sample$diabetes)
 ```
