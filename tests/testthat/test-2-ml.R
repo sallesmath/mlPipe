@@ -5,7 +5,9 @@ test_that("all arguments must be valid in order to the function return a list of
   data(PimaIndiansDiabetes)
   # rename dataset to keep code below generic
   my_df <- PimaIndiansDiabetes
-  # now you're able to train your data
+  # now we're going to define our train set
+  my_training_sample <- ml.trainset(my_df, 0.8, seed = 42)
+  # and now we're able to train our data
   my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"),
                             metric = "Accuracy", seed = 42, resampling = "cv")
   expect_type(my_models, "list")

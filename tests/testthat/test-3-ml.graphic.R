@@ -5,8 +5,10 @@ test_that("test if your desired list of plots is working", {
   data(PimaIndiansDiabetes)
   # rename dataset to keep code below generic
   my_df <- PimaIndiansDiabetes
-  # now you're able to train your data
-  my_models <- ml.trainlist(my_df, 0.8, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "repeatedcv")
+  # now we're going to define our train set
+  my_training_sample <- ml.trainset(my_df, 0.8, seed = 42)
+  # and now we're able to train our data
+  my_models <- ml.trainlist(train_sample = my_training_sample, algorithm = c("rf", "lda", "glm", "knn"), metric = "Accuracy", seed = 42, resampling = "cv")
   my_models
   results <- caret::resamples(my_models)
   summary(results)
