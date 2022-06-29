@@ -1,6 +1,7 @@
 test_that("arguments are valid and the function returns an object of class train", {
   # load data
   # table available in caret package database
+  library(mlbench)
   data(PimaIndiansDiabetes)
   # rename dataset to keep code below generic
   my_df <- PimaIndiansDiabetes

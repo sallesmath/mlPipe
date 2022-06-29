@@ -1,6 +1,7 @@
 test_that("test if your desired list of plots is working", {
   # load data
   # table available in caret package database
+  library(mlbench)
   data(PimaIndiansDiabetes)
   # rename dataset to keep code below generic
   my_df <- PimaIndiansDiabetes
